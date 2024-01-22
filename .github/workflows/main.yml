@@ -1,11 +1,3 @@
-name: Push-to-EC2
-
-# Trigger deployment only on push to main branch
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   deploy:
     name: Deploy to EC2 on master branch push
@@ -14,6 +6,14 @@ jobs:
     steps:
       - name: Checkout the files
         uses: actions/checkout@v2
+
+      - name: Debug Information
+        run: |
+          echo "Debug Information:"
+          echo "EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}"
+          echo "HOST_DNS: ${{ secrets.HOST_DNS }}"
+          echo "USERNAME: ${{ secrets.USERNAME }}"
+          echo "TARGET_DIR: ${{ secrets.TARGET_DIR }}"
 
       - name: Deploy to Server 1
         uses: easingthemes/ssh-deploy@main

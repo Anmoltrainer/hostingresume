@@ -1,2 +1,0 @@
-# hostingresume
-ec2gittutorial

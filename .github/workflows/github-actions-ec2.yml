@@ -23,7 +23,7 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
 
-      - name: Executing remote ssh commands using ssh key
+      - name: Execute remote commands using ssh key
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_DNS }}
@@ -34,5 +34,10 @@ jobs:
             sudo apt-get install -y apache2
             sudo systemctl start apache2
             sudo systemctl enable apache2
-            cd home
+
+            # Add your custom commands here
+            # For example, moving files to the web server directory
+            cd /var/www/html
             sudo mv * /var/www/html
+
+            # Additional commands if needed
